@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block main %}
+<h1 class="page-header">Image Views</h1>
+
+
+<div ng-app="myApp" ng-controller="imageApp">
+  {% raw %}
+ 
+ 
+  
+  <div ng-repeat="x in newfolder track by $index" class="col-md-4">
+    <img src="{{x}}">
+  </div>
+
+
+</div>
+
+
+
+{% endraw %}
+</div>
+{% endblock %}
+
+{% block js %}
+<script src="https://d3js.org/d3.v4.min.js"></script>
+<script src='{{ url_for("static", filename="js/angular.min.js") }}' charset="utf-8"></script>
+<script src='{{ url_for("static", filename="js/app.js") }}' charset="utf-8"></script>
+{% endblock %}

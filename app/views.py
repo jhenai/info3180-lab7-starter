@@ -10,6 +10,7 @@ from flask import render_template, request, redirect, url_for, jsonify
 from bs4 import BeautifulSoup
 import requests
 import urlparse
+from image_getter import new_folder 
 
 ###
 # Routing for your application.
@@ -41,7 +42,18 @@ def add_header(response):
     response.headers['X-UA-Compatible'] = 'IE=Edge,chrome=1'
     response.headers['Cache-Control'] = 'public, max-age=0'
     return response
-
+    
+    
+@app.route('/api/thumbnails/', methods=['GET', 'POST'])
+def json_url():
+    error= None;
+    message= "Success"
+    thumbnails = new_folder
+    return jsonify(error=error,message=message,thumbnails=thumbnails)
+    
+@app.route('/thumbnails/view')
+def display_view():
+     return render_template('thumbnails.html')
 
 @app.errorhandler(404)
 def page_not_found(error):
